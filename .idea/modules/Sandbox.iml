@@ -5,8 +5,6 @@
     <output-test url="file://$MODULE_DIR$/../../Sandbox/out/test/classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../Sandbox">
-      <sourceFolder url="file://$MODULE_DIR$/../../Sandbox/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../Sandbox/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/../../Sandbox/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../Sandbox/build" />
       <excludeFolder url="file://$MODULE_DIR$/../../Sandbox/out" />
