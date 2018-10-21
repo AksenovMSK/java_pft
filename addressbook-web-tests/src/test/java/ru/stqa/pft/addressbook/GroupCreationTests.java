@@ -12,10 +12,10 @@ public class GroupCreationTests {
   public void setUp() throws Exception {
     wd = new FirefoxDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    Login("admin", "secret");
+    login("admin", "secret");
   }
 
-  private void Login(String username, String password) {
+  private void login(String username, String password) {
     wd.get("http://localhost/addressbook/");
     wd.findElement(By.name("user")).clear();
     wd.findElement(By.name("user")).sendKeys(username);
@@ -31,10 +31,10 @@ public class GroupCreationTests {
     fillGroupForm(new GroupData("test1", "test2", "test3"));
     submitGroupCreation();
     returnToGroupPage();
-    Logout();
+    logout();
   }
 
-  private void Logout() {
+  private void logout() {
     wd.findElement(By.linkText("Logout")).click();
   }
 
