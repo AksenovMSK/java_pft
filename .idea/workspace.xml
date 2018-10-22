@@ -733,7 +733,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540188424186" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540191387801" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/Sandbox/src/main/java" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/addressbook-web-tests/build.gradle" />
@@ -762,7 +762,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.ContactCreationTests">
+  <component name="RunManager" selected="TestNG.ContactCreationTests (1)">
     <configuration name="DistanceOfPoints" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.stqa.pft.sandbox.DistanceOfPoints" />
       <module name="Sandbox_main" />
@@ -785,6 +785,22 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ContactCreationTests (1)" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="addressbook-web-tests_test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.stqa.pft.addressbook.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.stqa.pft.addressbook" />
+      <option name="MAIN_CLASS_NAME" value="ru.stqa.pft.addressbook.ContactCreationTests" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -821,36 +837,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PointTests" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="Sandbox_test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value=".*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.stqa.pft.sandbox" />
-      <option name="MAIN_CLASS_NAME" value="ru.stqa.pft.sandbox.PointTests" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="TestNG.PointTests" />
       <item itemvalue="TestNG.GroupCreationTests" />
       <item itemvalue="Application.MyFirstProgram" />
       <item itemvalue="Application.DistanceOfPoints" />
       <item itemvalue="TestNG.ContactCreationTests" />
+      <item itemvalue="TestNG.ContactCreationTests (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.ContactCreationTests (1)" />
         <item itemvalue="TestNG.ContactCreationTests" />
         <item itemvalue="TestNG.GroupCreationTests" />
         <item itemvalue="Application.DistanceOfPoints" />
         <item itemvalue="Application.MyFirstProgram" />
-        <item itemvalue="TestNG.PointTests" />
       </list>
     </recent_temporary>
   </component>
