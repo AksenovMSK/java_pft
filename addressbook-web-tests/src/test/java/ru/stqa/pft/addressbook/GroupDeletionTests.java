@@ -13,7 +13,6 @@ public class GroupDeletionTests extends TestBase {
     gotoGroupPage();
     deletionSelectedGroup();
     returnToGroupPage();
-    logout();
   }
 
 }

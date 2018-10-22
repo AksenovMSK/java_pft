@@ -12,6 +12,5 @@ public class ContactCreationTests extends TestBase {
     initContact();
     fillContactForm(new ContactData("Nametest", "Lastnametest", "Test home 123", "111111111", "test@mail.ru"));
     submitContactCreation();
-    logout();
   }
 }
