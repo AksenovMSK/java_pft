@@ -85,7 +85,7 @@ public class TestBase {
       }
     }
 
-    protected void deletionSelectedGroup() {
+    protected void deletionSelectedGroups() {
       wd.findElement(By.name("selected[]")).click();
       wd.findElement(By.name("delete")).click();
     }
