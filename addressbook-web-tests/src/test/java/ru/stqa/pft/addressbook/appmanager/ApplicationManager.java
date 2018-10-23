@@ -89,7 +89,7 @@ public class ApplicationManager {
   }
 
   public void submitContactCreation() {
-    wd.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]")).click();
+    wd.findElement(By.xpath("xpath=(//input[@name='submit'])[2]")).click();
   }
 
   public void fillContactForm(ContactData contactData) {
