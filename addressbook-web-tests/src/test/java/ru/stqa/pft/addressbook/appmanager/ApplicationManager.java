@@ -89,7 +89,7 @@ public class ApplicationManager {
   }
 
   public void submitContactCreation() {
-    wd.findElement(By.xpath("xpath=(//input[@name='submit'])[2]")).click();
+    wd.findElement(By.xpath("//*[@id=\"content\"]/form/input[21]")).click();
   }
 
   public void fillContactForm(ContactData contactData) {
