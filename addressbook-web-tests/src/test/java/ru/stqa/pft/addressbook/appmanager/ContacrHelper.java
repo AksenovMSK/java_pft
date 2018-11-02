@@ -54,4 +54,15 @@ public class ContacrHelper extends BaseHelper {
     public void submitContactModifivation() {
         click(By.xpath("//div[@id='content']/form/input[22]"));
     }
+
+    public void createContact() {
+        initContact();
+        fillContactForm(new ContactData("Nametest", "Lastnametest", "Test home 123", "111111111", "test@mail.ru", "test1"), true);
+        submitContactCreation();
+    }
+
+    public boolean isThereAContact() {
+        wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        return isElementPresent(By.name("selected[]"));
+    }
 }
