@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.stqa.pft.addressbook.model.GroupData;
 
+import java.util.concurrent.TimeUnit;
+
 public class GroupHelper extends BaseHelper {
 
   public GroupHelper(WebDriver wd) {
@@ -42,5 +44,17 @@ public class GroupHelper extends BaseHelper {
 
   public void submitGroupModifivation() {
     click(By.name("update"));
+  }
+
+  public void createGroup(GroupData groupData) {
+    initGroupCreation();
+    fillGroupForm(groupData);
+    submitGroupCreation();
+    returnToGroupPage();
+  }
+
+  public boolean isThereAGroup() {
+    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+    return isElementPresent(By.name("selected[]"));
   }
 }
