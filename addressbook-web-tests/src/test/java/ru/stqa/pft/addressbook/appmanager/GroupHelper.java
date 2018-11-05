@@ -7,7 +7,6 @@ import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class GroupHelper extends BaseHelper {
 
@@ -57,7 +56,6 @@ public class GroupHelper extends BaseHelper {
   }
 
   public boolean isThereAGroup() {
-    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     return isElementPresent(By.name("selected[]"));
   }
 

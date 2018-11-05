@@ -31,7 +31,6 @@ public class ContacrHelper extends BaseHelper {
       if(creation){
           new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
       } else {
-          wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
           Assert.assertFalse(isElementPresent(By.name("new_group")));
       }
     }
