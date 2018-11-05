@@ -40,7 +40,8 @@ public class ContacrHelper extends BaseHelper {
       click(By.linkText("add new"));
     }
 
-    public void selectContacts() {
+    public void selectContacts(int index) {
+        wd.findElement((By.name("selected[]"))).click();
         click(By.name("selected[]"));
     }
 
@@ -71,10 +72,9 @@ public class ContacrHelper extends BaseHelper {
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
         for (WebElement element : elements){
-            int id = Integer.parseInt(element.findElement(By.cssSelector("td:nth-child(1)")).getAttribute("id"));
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
             String lastName = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
             String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
-
             ContactData contact = new ContactData(id, firstName, lastName, null, null, null, null);
             contacts.add(contact);
         }
