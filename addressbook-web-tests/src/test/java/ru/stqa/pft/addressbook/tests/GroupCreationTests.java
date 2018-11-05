@@ -47,10 +47,13 @@ public class GroupCreationTests extends TestBase {
 //  int max = after.stream().max((o1, o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId();
 
     // записываем найденый идентификатор к добавленной группе (в момент создания мы его не знали)
-    group.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId());
+    //group.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId());
     //добавляем обновлённую группу к изначальному списку для сравнения
     before.add(group);
-    Assert.assertEquals(new HashSet<>(before), new HashSet<>(after));
+    Comparator<? super GroupData> ById = (g1, g2) -> Integer.compare(g1.getId(),g2.getId());
+    before.sort(ById);
+    after.sort(ById);
+    Assert.assertEquals(before,after);
   }
 
 }
