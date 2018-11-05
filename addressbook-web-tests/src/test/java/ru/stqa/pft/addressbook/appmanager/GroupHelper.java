@@ -57,4 +57,9 @@ public class GroupHelper extends BaseHelper {
     wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     return isElementPresent(By.name("selected[]"));
   }
+
+  public int getGroupCount() {
+    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+    return wd.findElements(By.name("selected[]")).size();
+  }
 }
