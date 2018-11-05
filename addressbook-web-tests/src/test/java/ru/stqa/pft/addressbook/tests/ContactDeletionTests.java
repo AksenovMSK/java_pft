@@ -1,6 +1,9 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.annotations.Test;
+import ru.stqa.pft.addressbook.model.ContactData;
+
+import java.util.List;
 
 public class ContactDeletionTests extends TestBase {
 
@@ -10,6 +13,7 @@ public class ContactDeletionTests extends TestBase {
             app.getContacrHelper().createContact();
             app.getNavigationHelper().returnToHomePage();
         }
+        List<ContactData> before = app.getContacrHelper().getContactList();
         app.getContacrHelper().selectContacts();
         app.getContacrHelper().deletionSelectedContacts();
         app.getNavigationHelper().acceptAlert();

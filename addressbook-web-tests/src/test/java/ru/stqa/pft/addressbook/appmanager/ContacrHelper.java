@@ -1,13 +1,14 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class ContacrHelper extends BaseHelper {
@@ -64,5 +65,19 @@ public class ContacrHelper extends BaseHelper {
     public boolean isThereAContact() {
         wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         return isElementPresent(By.name("selected[]"));
+    }
+
+    public List<ContactData> getContactList() {
+        List<ContactData> contacts = new ArrayList<ContactData>();
+        List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
+        for (WebElement element : elements){
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+            String lastName = (element.findElement(By.tagName("input")).getAttribute("value"));
+            String firstName = (element.findElement(By.tagName("input")).getAttribute("value"));
+
+            ContactData contact = new ContactData(id, lastName, firstName, null, null, null, null);
+            contacts.add(contact);
+        }
+        return contacts;
     }
 }
