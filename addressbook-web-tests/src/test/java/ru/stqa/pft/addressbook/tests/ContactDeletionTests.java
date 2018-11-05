@@ -19,8 +19,8 @@ public class ContactDeletionTests extends TestBase {
         app.getContacrHelper().selectContacts(before.size() - 1);
         app.getContacrHelper().deletionSelectedContacts();
         app.getNavigationHelper().acceptAlert();
-        List<ContactData> after = app.getContacrHelper().getContactList();
         app.getNavigationHelper().returnToHomePage();
+        List<ContactData> after = app.getContacrHelper().getContactList();
         Assert.assertEquals(after.size(), before.size() - 1);
 
         before.remove(before.size() - 1);
