@@ -20,6 +20,18 @@ public class GroupCreationTests extends TestBase {
     app.getGroupHelper().returnToGroupPage();
     List<GroupData> after = app.getGroupHelper().getGroupList();
     Assert.assertEquals(after.size(), before.size() + 1);
+
+    // ищем в новом списке групп, группу с максимальным идентификатором ID
+    int max = 0;
+    for (GroupData g : after){
+      if(g.getId() > max){
+        max = g.getId();
+      }
+    }
+    // записываем найденый идентификатор к добавленной группе (в момент создания мы его не знали)
+    group.setId(max);
+    //добавляем обновлённую группу к изначальному списку для сравнения
+    before.add(group);
     Assert.assertEquals(new HashSet<>(before), new HashSet<>(after));
   }
 
