@@ -42,7 +42,6 @@ public class ContacrHelper extends BaseHelper {
 
     public void selectContacts(int index) {
         wd.findElement((By.name("selected[]"))).click();
-        click(By.name("selected[]"));
     }
 
     public void deletionSelectedContacts() {
@@ -64,7 +63,6 @@ public class ContacrHelper extends BaseHelper {
     }
 
     public boolean isThereAContact() {
-        wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         return isElementPresent(By.name("selected[]"));
     }
 
