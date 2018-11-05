@@ -3,6 +3,8 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class NavigationHelper extends BaseHelper {
 
   public NavigationHelper(WebDriver wd) {
@@ -18,6 +20,7 @@ public class NavigationHelper extends BaseHelper {
   }
 
   public void returnToHomePage() {
-    click(By.linkText("home page"));
+    click(By.id("logo"));
   }
 }
+
