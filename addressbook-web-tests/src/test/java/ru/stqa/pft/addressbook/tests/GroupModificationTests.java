@@ -18,6 +18,7 @@ public class GroupModificationTests extends TestBase {
         List<GroupData> before = app.getGroupHelper().getGroupList();
         app.getGroupHelper().selectGroup(before.size() - 1);
         app.getGroupHelper().initGroupModification();
+        //при редактировании группы используем старый модификатор ID, что бы в конце сравнение списков удалось
         GroupData group = new GroupData(before.get(before.size() - 1).getId(), "test1", "test2", "test3");
         app.getGroupHelper().fillGroupForm(group);
         app.getGroupHelper().submitGroupModifivation();
