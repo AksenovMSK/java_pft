@@ -39,7 +39,7 @@ public class ContacrHelper extends BaseHelper {
     }
 
     public void selectContacts(int index) {
-        wd.findElements(By.name("selected[]")).get(index).click();
+        click(By.name("selected[]"),index);
     }
 
     public void deletionSelectedContacts() {
@@ -47,7 +47,7 @@ public class ContacrHelper extends BaseHelper {
     }
 
     public void initContactModification(int index) {
-        wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
+        click(By.xpath("//img[@alt='Edit']"),index);
     }
 
     public void submitContactModifivation() {
