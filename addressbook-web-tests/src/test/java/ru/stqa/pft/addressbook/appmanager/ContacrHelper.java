@@ -54,7 +54,7 @@ public class ContacrHelper extends BaseHelper {
         click(By.xpath("//div[@id='content']/form/input[22]"));
     }
 
-    public void createContact() {
+    public void createContact(ContactData contactData) {
         initContact();
         fillContactForm(new ContactData("Nametest", "Lastnametest", "Test home 123", "111111111", "test@mail.ru", "test1"), true);
         submitContactCreation();
