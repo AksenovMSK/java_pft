@@ -80,7 +80,7 @@ public class ContacrHelper extends BaseHelper {
         return contacts;
     }
 
-    public void modifyContact(ContactData contactData, int index, boolean creation) {
+    public void modify(ContactData contactData, int index, boolean creation) {
         initContactModification(index);
         fillContactForm(contactData, false);
         submitContactModifivation();
