@@ -19,7 +19,7 @@ public class NavigationHelper extends BaseHelper {
     wd.switchTo().alert().accept();
   }
 
-  public void returnToHomePage() {
+  public void homePage() {
     click(By.id("logo"));
   }
 }

@@ -41,11 +41,11 @@ public class ContacrHelper extends BaseHelper {
       click(By.linkText("add new"));
     }
 
-    public void selectContacts(int index) {
+    public void select(int index) {
         click(By.name("selected[]"),index);
     }
 
-    public void deletionSelectedContacts() {
+    public void delete() {
         click(By.xpath("//input[@value='Delete']"));
     }
 
@@ -57,7 +57,7 @@ public class ContacrHelper extends BaseHelper {
         click(By.xpath("//div[@id='content']/form/input[22]"));
     }
 
-    public void createContact(ContactData contactData, boolean creation) {
+    public void create(ContactData contactData, boolean creation) {
         initContact();
         fillContactForm(new ContactData("Nametest", "Lastnametest", "Test home 123", "111111111", "test@mail.ru", "test1"), true);
         submitContactCreation();
@@ -67,7 +67,7 @@ public class ContacrHelper extends BaseHelper {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public List<ContactData> getContactList() {
+    public List<ContactData> list() {
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
         for (WebElement element : elements){
