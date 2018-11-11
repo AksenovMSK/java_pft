@@ -5,22 +5,24 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class GroupCreationTests extends TestBase {
 
   @Test
-  public void testGroupCreation() throws Exception {
+  public void testGroupCreation() {
     app.getNavigationHelper().gotoGroupPage();
     List<GroupData> before = app.getGroupHelper().getGroupList();
-    app.getGroupHelper().initGroupCreation();
     GroupData group = new GroupData("test1", "test2", "test3");
-    app.getGroupHelper().fillGroupForm(group);
-    app.getGroupHelper().submitGroupCreation();
-    app.getGroupHelper().returnToGroupPage();
+    app.getGroupHelper().createGroup(group);
     List<GroupData> after = app.getGroupHelper().getGroupList();
     Assert.assertEquals(after.size(), before.size() + 1);
+
+    before.add(group);
+    Comparator<? super GroupData> ById = (g1, g2) -> Integer.compare(g1.getId(),g2.getId());
+    before.sort(ById);
+    after.sort(ById);
+    Assert.assertEquals(before,after);
 
     // ищем в новом списке групп, группу с максимальным идентификатором ID
 
@@ -49,11 +51,6 @@ public class GroupCreationTests extends TestBase {
     // записываем найденый идентификатор к добавленной группе (в момент создания мы его не знали)
     //group.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId());
     //добавляем обновлённую группу к изначальному списку для сравнения
-    before.add(group);
-    Comparator<? super GroupData> ById = (g1, g2) -> Integer.compare(g1.getId(),g2.getId());
-    before.sort(ById);
-    after.sort(ById);
-    Assert.assertEquals(before,after);
   }
 
 }
