@@ -41,11 +41,11 @@ public class ContacrHelper extends BaseHelper {
       click(By.linkText("add new"));
     }
 
-    public void select(int index) {
+    public void selectContact(int index) {
         click(By.name("selected[]"),index);
     }
 
-    public void delete() {
+    public void deleteContact() {
         click(By.xpath("//input[@value='Delete']"));
     }
 
@@ -83,5 +83,10 @@ public class ContacrHelper extends BaseHelper {
         initContactModification(index);
         fillContactForm(contactData, false);
         submitContactModifivation();
+    }
+
+    public void delete(int index) {
+        selectContact(index);
+        deleteContact();
     }
 }

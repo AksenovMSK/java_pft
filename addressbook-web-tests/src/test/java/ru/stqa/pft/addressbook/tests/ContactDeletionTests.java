@@ -28,8 +28,7 @@ public class ContactDeletionTests extends TestBase {
     public void testContactDeletion(){
         List<ContactData> before = app.contact().list();
         int index = before.size() - 1;
-        app.contact().select(index);
-        app.contact().delete();
+        app.contact().delete(index);
         app.goTo().acceptAlert();
         app.goTo().homePage();
         List<ContactData> after = app.contact().list();
