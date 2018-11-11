@@ -55,7 +55,7 @@ public class GroupHelper extends BaseHelper {
     returnToGroupPage();
   }
 
-  public void modifyGroup(int index, GroupData groupData) {
+  public void modifyGroup(GroupData groupData, int index) {
     selectGroup(index);
     initGroupModification();
     fillGroupForm(groupData);
