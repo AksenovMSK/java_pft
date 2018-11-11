@@ -55,6 +55,12 @@ public class GroupHelper extends BaseHelper {
     returnToGroupPage();
   }
 
+  public void delete(int index) {
+    selectGroup(index);
+    deletionSelectedGroups();
+    returnToGroupPage();
+  }
+
   public void modifyGroup(GroupData groupData, int index) {
     selectGroup(index);
     initGroupModification();
