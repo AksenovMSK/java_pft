@@ -21,13 +21,14 @@ public class GroupDeletionTests extends TestBase {
   public void testGroupDeletion(){
 
     List<GroupData> before = app.group().getGroupList();
-    app.group().selectGroup(before.size() - 1);
+    int index = before.size() - 1;
+    app.group().selectGroup(index);
     app.group().deletionSelectedGroups();
     app.group().returnToGroupPage();
     List<GroupData> after = app.group().getGroupList();
-    Assert.assertEquals(after.size(), before.size() - 1);
+    Assert.assertEquals(after.size(), index);
 
-    before.remove(before.size() - 1);
+    before.remove(index);
     Assert.assertEquals(before,after);
   }
 
