@@ -28,7 +28,10 @@ public class ContacrHelper extends BaseHelper {
       type(By.name("email"), contactData.getEmail());
 
       if(creation){
-          new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+          String existingText = wd.findElement(By.name("new_group")).getAttribute("value");
+          if(! existingText.equals("[none]")) {
+              new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+          }
       } else {
           Assert.assertFalse(isElementPresent(By.name("new_group")));
       }
