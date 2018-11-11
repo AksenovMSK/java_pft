@@ -54,7 +54,7 @@ public class ContacrHelper extends BaseHelper {
         click(By.xpath("//div[@id='content']/form/input[22]"));
     }
 
-    public void createContact(ContactData contactData) {
+    public void createContact(ContactData contactData, boolean creation) {
         initContact();
         fillContactForm(new ContactData("Nametest", "Lastnametest", "Test home 123", "111111111", "test@mail.ru", "test1"), true);
         submitContactCreation();
@@ -75,5 +75,11 @@ public class ContacrHelper extends BaseHelper {
             contacts.add(contact);
         }
         return contacts;
+    }
+
+    public void modifyContact(ContactData contactData, int index, boolean creation) {
+        initContactModification(index);
+        fillContactForm(contactData, false);
+        submitContactModifivation();
     }
 }
