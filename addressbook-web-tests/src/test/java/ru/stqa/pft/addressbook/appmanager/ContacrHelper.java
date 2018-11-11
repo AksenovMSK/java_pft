@@ -59,7 +59,7 @@ public class ContacrHelper extends BaseHelper {
 
     public void create(ContactData contactData, boolean creation) {
         initContact();
-        fillContactForm(new ContactData("Nametest", "Lastnametest", "Test home 123", "111111111", "test@mail.ru", "test1"), true);
+        fillContactForm(contactData, true);
         submitContactCreation();
     }
 
@@ -74,8 +74,7 @@ public class ContacrHelper extends BaseHelper {
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
             String lastName = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
             String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
-            ContactData contact = new ContactData(id, firstName, lastName, null, null, null, null);
-            contacts.add(contact);
+            contacts.add(new ContactData().withId(id).withFirstname(firstName).withLastname(lastName));
         }
         return contacts;
     }
