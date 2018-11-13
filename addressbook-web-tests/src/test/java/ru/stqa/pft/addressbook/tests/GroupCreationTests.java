@@ -18,6 +18,7 @@ public class GroupCreationTests extends TestBase {
     Assert.assertEquals(after.size(), before.size() + 1);
 
     // преобразуем множество в поток, а затем поток объектов GroupData превращаем в поток чисел, выбираем максимальное значение
+    // необходимо для записи реального ID, добавленного ранее элемента
     group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt());
     before.add(group);
     Assert.assertEquals(before,after);
