@@ -51,8 +51,11 @@ public class ContacrHelper extends BaseHelper {
         click(By.xpath("//input[@value='Delete']"));
     }
 
-    public void initContactModification(int index) {
-        click(By.xpath("//img[@alt='Edit']"),index);
+    public void initContactModification(int id) {
+
+        wd.findElement(By.cssSelector("input[id='" + id + "']~img")).click();
+
+        //click(By.xpath("//img[@alt='Edit']"),index);
     }
 
     public void submitContactModifivation() {
@@ -69,18 +72,6 @@ public class ContacrHelper extends BaseHelper {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public List<ContactData> list() {
-        List<ContactData> contacts = new ArrayList<ContactData>();
-        List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
-        for (WebElement element : elements){
-            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-            String lastName = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
-            String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
-            contacts.add(new ContactData().withId(id).withFirstname(firstName).withLastname(lastName));
-        }
-        return contacts;
-    }
-
     public Set<ContactData> all() {
         Set<ContactData> contacts = new HashSet<ContactData>();
         List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
@@ -93,8 +84,9 @@ public class ContacrHelper extends BaseHelper {
         return contacts;
     }
 
-    public void modify(ContactData contactData, int index, boolean creation) {
-        initContactModification(index);
+
+    public void modify(ContactData contactData, boolean creation) {
+        initContactModification(contactData.getId());
         fillContactForm(contactData, false);
         submitContactModifivation();
     }
