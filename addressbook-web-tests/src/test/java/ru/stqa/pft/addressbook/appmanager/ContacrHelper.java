@@ -53,9 +53,7 @@ public class ContacrHelper extends BaseHelper {
 
     public void initContactModification(int id) {
 
-        wd.findElement(By.cssSelector("input[id='" + id + "']~img")).click();
-
-        //click(By.xpath("//img[@alt='Edit']"),index);
+        wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
     }
 
     public void submitContactModifivation() {
