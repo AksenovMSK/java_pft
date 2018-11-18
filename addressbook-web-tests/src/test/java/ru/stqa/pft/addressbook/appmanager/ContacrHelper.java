@@ -96,8 +96,8 @@ public class ContacrHelper extends BaseHelper {
             int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
             String lastName = cells.get(1).getText();
             String firstName = cells.get(2).getText();
-            String address = cells.get(2).getText();
-            String allEmails = cells.get(2).getText();
+            String address = cells.get(3).getText();
+            String allEmails = cells.get(4).getText();
             String allPhones = cells.get(5).getText();
             contactCach.add(new ContactData()
                     .withId(id)
