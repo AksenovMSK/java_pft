@@ -24,7 +24,7 @@ public class ContacrHelper extends BaseHelper {
       type(By.name("firstname"), contactData.getFirstname());
       type(By.name("lastname"), contactData.getLastname());
       type(By.name("address"), contactData.getAddress());
-      type(By.name("mobile"), contactData.getMobile());
+      type(By.name("mobile"), contactData.getMobilePhone());
       type(By.name("email"), contactData.getEmail());
 
       if(creation){
@@ -89,12 +89,21 @@ public class ContacrHelper extends BaseHelper {
             return new Contacts(contactCach);
         }
         contactCach = new Contacts();
-        List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
-        for (WebElement element : elements){
-            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-            String lastName = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
-            String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
-            contactCach.add(new ContactData().withId(id).withFirstname(firstName).withLastname(lastName));
+        List<WebElement> rows = wd.findElements(By.name("entry"));
+        for (WebElement row : rows){
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+
+            int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+            String lastName = cells.get(1).getText();
+            String firstName = cells.get(2).getText();
+            String[] phones = cells.get(5).getText().split("\n");
+            contactCach.add(new ContactData()
+                    .withId(id)
+                    .withFirstname(firstName)
+                    .withLastname(lastName)
+                    .withHomePhone(phones[0])
+                    .withMobilePhone(phones[1])
+                    .withWorkPhone(phones[2]));
         }
         return new Contacts(contactCach);
     }
@@ -129,8 +138,8 @@ public class ContacrHelper extends BaseHelper {
                 .withId(contact.getId())
                 .withFirstname(firstname)
                 .withLastname(lastname)
-                .withHome(home)
-                .withMobile(mobile)
-                .withWork(work);
+                .withHomePhone(home)
+                .withMobilePhone(mobile)
+                .withWorkPhone(work);
     }
 }
