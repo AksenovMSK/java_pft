@@ -14,8 +14,8 @@ public class ContactModificationTests extends TestBase {
     public void ensurePreconditions(){
         if(app.contact().all().size() == 0){
             ContactData contact = new ContactData()
-                    .withFirstname("Nametest")
-                    .withLastname("Lastnametest")
+                    .withFirstName("Nametest")
+                    .withLastName("Lastnametest")
                     .withAddress("Test home 123")
                     .withMobilePhone("111111111")
                     .withEmail("test@mail.ru").withGroup("test1");
@@ -31,8 +31,8 @@ public class ContactModificationTests extends TestBase {
         ContactData modifyContact = before.iterator().next();
         ContactData contact = new ContactData()
                 .withId(modifyContact.getId())
-                .withFirstname("Nametest")
-                .withLastname("Lastnametest")
+                .withFirstName("Nametest")
+                .withLastName("Lastnametest")
                 .withAddress("Test home 123")
                 .withMobilePhone("111111111")
                 .withEmail("test@mail.ru");

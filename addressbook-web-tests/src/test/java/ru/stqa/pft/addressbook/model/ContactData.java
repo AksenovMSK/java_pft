@@ -22,12 +22,12 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withFirstname(String firstname) {
+    public ContactData withFirstName(String firstname) {
         this.firstName = firstname;
         return this;
     }
 
-    public ContactData withLastname(String lastname) {
+    public ContactData withLastName(String lastname) {
         this.lastName = lastname;
         return this;
     }

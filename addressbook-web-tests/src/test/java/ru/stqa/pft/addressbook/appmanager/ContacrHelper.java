@@ -101,8 +101,8 @@ public class ContacrHelper extends BaseHelper {
             String allPhones = cells.get(5).getText();
             contactCach.add(new ContactData()
                     .withId(id)
-                    .withFirstname(firstName)
-                    .withLastname(lastName)
+                    .withFirstName(firstName)
+                    .withLastName(lastName)
                     .withAddress(address)
                     .withAllEmail(allEmails)
                     .withAllPhones(allPhones));
@@ -142,8 +142,8 @@ public class ContacrHelper extends BaseHelper {
         wd.navigate().back();
         return new ContactData()
                 .withId(contact.getId())
-                .withFirstname(firstname)
-                .withLastname(lastname)
+                .withFirstName(firstname)
+                .withLastName(lastname)
                 .withAddress(address)
                 .withHomePhone(home)
                 .withMobilePhone(mobile)
