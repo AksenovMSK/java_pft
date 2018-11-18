@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class ContactData {
     private int id = Integer.MAX_VALUE;;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private String address;
     private String homePhone;
     private String mobilePhone;
@@ -23,12 +23,12 @@ public class ContactData {
     }
 
     public ContactData withFirstname(String firstname) {
-        this.firstname = firstname;
+        this.firstName = firstname;
         return this;
     }
 
     public ContactData withLastname(String lastname) {
-        this.lastname = lastname;
+        this.lastName = lastname;
         return this;
     }
 
@@ -84,12 +84,12 @@ public class ContactData {
 
     public int getId() { return id; }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
     public String getAddress() {
@@ -127,8 +127,8 @@ public class ContactData {
     public String toString() {
         return "ContactData{" +
                 "id=" + id +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 '}';
     }
 
@@ -138,12 +138,12 @@ public class ContactData {
         if (o == null || getClass() != o.getClass()) return false;
         ContactData that = (ContactData) o;
         return id == that.id &&
-                Objects.equals(firstname, that.firstname) &&
-                Objects.equals(lastname, that.lastname);
+                Objects.equals(firstName, that.firstName) &&
+                Objects.equals(lastName, that.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstname, lastname);
+        return Objects.hash(id, firstName, lastName);
     }
 }
