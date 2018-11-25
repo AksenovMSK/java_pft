@@ -64,7 +64,7 @@ public class ContacrHelper extends BaseHelper {
 //        wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
     }
 
-    public void submitContactModifivation() {
+    public void submitContactModification() {
         click(By.xpath("//div[@id='content']/form/input[22]"));
     }
 
@@ -115,7 +115,7 @@ public class ContacrHelper extends BaseHelper {
     public void modify(ContactData contactData, boolean creation) {
         initContactModification(contactData.getId());
         fillContactForm(contactData, false);
-        submitContactModifivation();
+        submitContactModification();
         contactCach = null;
     }
 
