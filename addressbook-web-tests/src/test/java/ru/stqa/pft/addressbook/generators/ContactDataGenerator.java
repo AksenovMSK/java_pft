@@ -40,9 +40,7 @@ public class ContactDataGenerator {
 
     private void run() throws IOException {
         List<ContactData> contacts = generateContact(count);
-        if(format.equals("csv")){
-            saveAsCsv(contacts, new File(file));
-        } else if (format.equals("xml")){
+        if (format.equals("xml")){
             saveAsXml(contacts, new File(file));
         } else if (format.equals("json")) {
             saveAsJson(contacts, new File(file));
@@ -78,19 +76,6 @@ public class ContactDataGenerator {
         String xml = xStream.toXML(contacts);
         Writer writer = new FileWriter(file);
         writer.write(xml);
-        writer.close();
-    }
-
-    private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
-        Writer writer = new FileWriter(file);
-        for(ContactData contact : contacts){
-            writer.write(String.format("%s;%s;%s\n",
-                    contact.getFirstName(),
-                    contact.getLastName(),
-                    contact.getAddress(),
-                    contact.getMobilePhone(),
-                    contact.getEmail()));
-        }
         writer.close();
     }
 }
