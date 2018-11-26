@@ -34,7 +34,7 @@ public class ApplicationManager {
 
   public void init() throws IOException {
     String target = System.getProperty("target", "local");
-    properties.load(new FileReader(new File(String.format("addressbook-web-tests/src/test/resources/%s.properties", target))));
+    properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
     if (browser.equals(BrowserType.FIREFOX)){
       wd = new FirefoxDriver();
     } else if (browser.equals(BrowserType.CHROME)){
