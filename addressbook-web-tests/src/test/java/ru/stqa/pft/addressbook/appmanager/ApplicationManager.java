@@ -10,7 +10,6 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
@@ -23,7 +22,7 @@ public class ApplicationManager {
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
   private SessionHelper sessionHelper;
-  private ContacrHelper contacrHelper;
+  private ContactHelper contactHelper;
   private String browser;
   private DbHelper dbHelper;
 
@@ -51,7 +50,7 @@ public class ApplicationManager {
     wd.get(properties.getProperty("web.baseUrl"));
     groupHelper = new GroupHelper(wd);
     navigationHelper = new NavigationHelper(wd);
-    contacrHelper = new ContacrHelper(wd);
+    contactHelper = new ContactHelper(wd);
     sessionHelper = new SessionHelper(wd);
     sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
   }
@@ -87,8 +86,8 @@ public class ApplicationManager {
     return navigationHelper;
   }
 
-  public ContacrHelper contact() {
-    return contacrHelper;
+  public ContactHelper contact() {
+    return contactHelper;
   }
 
   public DbHelper db(){return dbHelper;}

@@ -10,9 +10,9 @@ import ru.stqa.pft.addressbook.model.Contacts;
 
 import java.util.List;
 
-public class ContacrHelper extends BaseHelper {
+public class ContactHelper extends BaseHelper {
 
-    public ContacrHelper(WebDriver wd) {
+    public ContactHelper(WebDriver wd) {
         super(wd);
     }
 
@@ -25,7 +25,9 @@ public class ContacrHelper extends BaseHelper {
       type(By.name("lastname"), contactData.getLastName());
       type(By.name("address"), contactData.getAddress());
       type(By.name("mobile"), contactData.getMobilePhone());
+      type(By.name("fax"), contactData.getFax());
       type(By.name("email"), contactData.getEmail());
+      type(By.name("homepage"), contactData.getHomepage());
       attach(By.name("photo"), contactData.getPhoto());
 
       if(creation){

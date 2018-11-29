@@ -49,6 +49,11 @@ public class ContactData {
     private String allPhones;
 
     @Expose
+    @Column(name = "fax")
+    @Type(type = "text")
+    private String fax;
+
+    @Expose
     @Column(name = "email")
     @Type(type = "text")
     private String email;
@@ -63,6 +68,11 @@ public class ContactData {
 
     @Transient
     private String allEmail;
+
+    @Expose
+    @Column(name = "homepage")
+    @Type(type = "text")
+    private String homepage;
 
     @Transient
     private String group;
@@ -111,6 +121,11 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withFax(String fax) {
+        this.fax = fax;
+        return this;
+    }
+
     public ContactData withEmail(String email) {
         this.email = email;
         return this;
@@ -128,6 +143,11 @@ public class ContactData {
 
     public ContactData withAllEmail(String allEmail) {
         this.allEmail = allEmail;
+        return this;
+    }
+
+    public ContactData withHomepage(String homepage) {
+        this.homepage = homepage;
         return this;
     }
 
@@ -169,6 +189,8 @@ public class ContactData {
 
     public String getAllPhones() { return allPhones; }
 
+    public String getFax() { return fax; }
+
     public String getEmail() {
         return email;
     }
@@ -178,6 +200,8 @@ public class ContactData {
     public String getEmail3() { return email3; }
 
     public String getAllEmail() { return allEmail; }
+
+    public String getHomepage() { return homepage; }
 
     public String getGroup() { return group; }
 
@@ -203,11 +227,13 @@ public class ContactData {
                 Objects.equals(lastName, that.lastName) &&
                 Objects.equals(address, that.address) &&
                 Objects.equals(mobilePhone, that.mobilePhone) &&
-                Objects.equals(email, that.email);
+                Objects.equals(fax, that.fax) &&
+                Objects.equals(email, that.email) &&
+                Objects.equals(homepage, that.homepage);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, address, mobilePhone, email);
+        return Objects.hash(id, firstName, lastName, address, mobilePhone, fax, email, homepage);
     }
 }
