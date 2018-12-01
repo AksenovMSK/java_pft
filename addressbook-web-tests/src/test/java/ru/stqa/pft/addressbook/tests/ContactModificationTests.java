@@ -22,8 +22,7 @@ public class ContactModificationTests extends TestBase {
                     .withMobilePhone("111111111")
                     .withFax("222222222")
                     .withEmail("test@mail.ru")
-                    .withHomepage("testhomepage.ru")
-                    .withGroup("test1");
+                    .withHomepage("testhomepage.ru");
             app.contact().create(contact, true);
             app.goTo().homePage();
         }
