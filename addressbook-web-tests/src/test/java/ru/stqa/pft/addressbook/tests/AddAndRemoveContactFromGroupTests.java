@@ -26,12 +26,12 @@ public class AddAndRemoveContactFromGroupTests extends TestBase {
             app.goTo().groupPage();
             app.group().create(new GroupData().withName("test1").withHeader("test2").withFooter("test3"));
         }
-        //app.db().cleanRelationsBetweenContactsAndGroups();
+        app.db().cleanRelationsBetweenContactsAndGroups();
     }
 
     @Test
     public void testAddContactToGroup(){
-        app.db().cleanRelationsBetweenContactsAndGroups();
+
     }
 
     @Test
