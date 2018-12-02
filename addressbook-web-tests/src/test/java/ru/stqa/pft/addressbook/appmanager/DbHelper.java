@@ -43,7 +43,7 @@ public class DbHelper {
         return new Contacts(result);
     }
 
-    public void cleanRelarionsBetweenContactsAndGroups(){
+    public void cleanRelationsBetweenContactsAndGroups(){
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.createQuery( "DELETE FROM address_in_groups" );

@@ -1,13 +1,10 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.hibernate.Session;
 import org.testng.annotations.BeforeMethod;
 
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
-
-import java.util.List;
 
 public class AddAndRemoveContactFromGroupTests extends TestBase {
 
@@ -29,7 +26,7 @@ public class AddAndRemoveContactFromGroupTests extends TestBase {
             app.goTo().groupPage();
             app.group().create(new GroupData().withName("test1").withHeader("test2").withFooter("test3"));
         }
-        app.db().cleanRelarionsBetweenContactsAndGroups();
+        app.db().cleanRelationsBetweenContactsAndGroups();
     }
 
     @Test
