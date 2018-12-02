@@ -46,6 +46,8 @@ public class DbHelper {
     public void cleanRelarionsBetweenContactsAndGroups(){
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.createQuery( "DELETE * FROM `address_in_groups" );
+        session.createQuery( "DELETE FROM address_in_groups" );
+        session.getTransaction().commit();
+        session.close();
     }
 }
