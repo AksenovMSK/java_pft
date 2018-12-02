@@ -42,4 +42,10 @@ public class DbHelper {
         session.close();
         return new Contacts(result);
     }
+
+    public void cleanRelarionsBetweenContactsAndGroups(){
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.createQuery( "DELETE * FROM `address_in_groups" );
+    }
 }

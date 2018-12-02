@@ -1,11 +1,15 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.hibernate.Session;
 import org.testng.annotations.BeforeMethod;
 
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.GroupData;
 
-public class AddContactToGroupTests extends TestBase {
+import java.util.List;
+
+public class AddAndRemoveContactFromGroupTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions(){
@@ -21,10 +25,20 @@ public class AddContactToGroupTests extends TestBase {
             app.contact().create(contact, true);
             app.goTo().homePage();
         }
+        if(app.db().groups().size() == 0){
+            app.goTo().groupPage();
+            app.group().create(new GroupData().withName("test1").withHeader("test2").withFooter("test3"));
+        }
+        app.db().cleanRelarionsBetweenContactsAndGroups();
     }
 
     @Test
     public void testAddContactToGroup(){
+
+    }
+
+    @Test
+    public void testRemoveContactFromGroup(){
 
     }
 }
