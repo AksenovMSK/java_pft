@@ -7,8 +7,11 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ContactHelper extends BaseHelper {
 
@@ -128,6 +131,12 @@ public class ContactHelper extends BaseHelper {
         selectContactById(contact.getId());
         deleteContact();
         contactCach = null;
+    }
+
+    public void addToGroup(ContactData contact, GroupData group){
+        selectContactById(contact.getId());
+        new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
+        click(By.cssSelector("input[name='add']"));
     }
 
     private void selectContactById(int id) {
