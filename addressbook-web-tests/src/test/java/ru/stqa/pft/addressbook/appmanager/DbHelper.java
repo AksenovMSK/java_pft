@@ -50,7 +50,8 @@ public class DbHelper {
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost/addressbook?user=root&password=&serverTimezone=UTC");
             Statement st = conn.createStatement();
-            st.executeQuery("DELETE FROM `address_in_groups`");
+            String sql = "DELETE FROM address_in_groups";
+            st.execute(sql);
             st.close();
             conn.close();
         } catch (SQLException ex) {
@@ -59,12 +60,5 @@ public class DbHelper {
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
         }
-
-
-//        Session session = sessionFactory.openSession();
-//        session.beginTransaction();
-//        session.createQuery( "DELETE FROM address_in_groups" );
-//        session.getTransaction().commit();
-//        session.close();
     }
 }
