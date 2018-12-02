@@ -20,5 +20,8 @@ public class NavigationHelper extends BaseHelper {
   public void homePage() {
     click(By.id("logo"));
   }
+  public void addedGroupPage(){
+    click(By.cssSelector("i > a"));
+  }
 }
 
