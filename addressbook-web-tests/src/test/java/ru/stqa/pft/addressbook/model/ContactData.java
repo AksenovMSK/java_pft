@@ -76,9 +76,6 @@ public class ContactData {
     @Type(type = "text")
     private String homepage;
 
-    //@Transient
-    //private String group;
-
     @Column(name = "photo")
     @Type(type = "text")
     private String photo;
@@ -157,11 +154,6 @@ public class ContactData {
         return this;
     }
 
-//    public ContactData withGroup(String group) {
-//        this.group = group;
-//        return this;
-//    }
-
     public ContactData withPhoto(File photo) {
         this.photo = photo.getPath();
         return this;
@@ -208,8 +200,6 @@ public class ContactData {
     public String getAllEmail() { return allEmail; }
 
     public String getHomepage() { return homepage; }
-
-//    public String getGroup() { return group; }
 
     public File getPhoto() { return new File(photo); }
 

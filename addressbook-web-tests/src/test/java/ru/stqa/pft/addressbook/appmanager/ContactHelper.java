@@ -8,10 +8,8 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
-import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class ContactHelper extends BaseHelper {
 
@@ -37,9 +35,6 @@ public class ContactHelper extends BaseHelper {
           if(contactData.getGroups().size() > 0){
               Assert.assertTrue(contactData.getGroups().size() == 1);
               new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
-          //String existingText = wd.findElement(By.name("new_group")).getAttribute("value");
-          //if(! existingText.equals("[none]")) {
-              //new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
           }
       } else {
           Assert.assertFalse(isElementPresent(By.name("new_group")));
@@ -61,15 +56,6 @@ public class ContactHelper extends BaseHelper {
     public void initContactModification(int id) {
 
         wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
-
-//        WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
-//        WebElement row = checkbox.findElement(By.xpath("./../.."));
-//        List<WebElement> cells = row.findElements(By.tagName("td"));
-//        cells.get(7).findElement(By.tagName("a")).click();
-//
-//        wd.findElement(By.xpath(String.format("//input(@value='%s')//../../td(8)/a", id))).click();
-//        wd.findElement(By.xpath(String.format("//tr(.//input(@value='%s'))/td(8)/a", id))).click();
-//        wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
     }
 
     public void submitContactModification() {

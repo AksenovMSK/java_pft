@@ -3,13 +3,10 @@ package ru.stqa.pft.addressbook.tests;
 import org.testng.annotations.BeforeMethod;
 
 import org.testng.annotations.Test;
-import ru.stqa.pft.addressbook.appmanager.ContactHelper;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
-
-import java.util.concurrent.TimeUnit;
 
 public class AddAndRemoveContactFromGroupTests extends TestBase {
 
@@ -31,15 +28,14 @@ public class AddAndRemoveContactFromGroupTests extends TestBase {
             app.goTo().groupPage();
             app.group().create(new GroupData().withName("test1").withHeader("test2").withFooter("test3"));
         }
-
     }
 
     @Test
     public void testAddContactToGroup(){
         app.db().cleanRelationsBetweenContactsAndGroups();
-        Contacts before = app.db().contacts();
+        Contacts contacts = app.db().contacts();
         Groups groups = app.db().groups();
-        ContactData modifyContact = before.iterator().next();
+        ContactData modifyContact = contacts.iterator().next();
         GroupData selectedGroup = groups.iterator().next();
         app.contact().addToGroup(modifyContact , selectedGroup);
         app.goTo().addedGroupPage();
