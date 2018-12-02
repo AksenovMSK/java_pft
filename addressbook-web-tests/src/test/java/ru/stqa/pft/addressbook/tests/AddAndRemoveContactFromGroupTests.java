@@ -31,7 +31,7 @@ public class AddAndRemoveContactFromGroupTests extends TestBase {
 
     @Test
     public void testAddContactToGroup(){
-
+        app.db().cleanRelationsBetweenContactsAndGroups();
     }
 
     @Test
