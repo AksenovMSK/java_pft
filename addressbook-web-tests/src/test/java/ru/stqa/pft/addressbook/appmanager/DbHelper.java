@@ -10,6 +10,7 @@ import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
+import java.sql.*;
 import java.util.List;
 
 public class DbHelper {
@@ -44,10 +45,26 @@ public class DbHelper {
     }
 
     public void cleanRelationsBetweenContactsAndGroups(){
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        session.createQuery( "DELETE FROM address_in_groups" );
-        session.getTransaction().commit();
-        session.close();
+        Connection conn = null;
+
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/addressbook?user=root&password=&serverTimezone=UTC");
+            Statement st = conn.createStatement();
+            st.executeQuery("select * from `address_in_groups`");
+            st.close();
+            conn.close();
+        } catch (SQLException ex) {
+            // handle any errors
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+
+        
+//        Session session = sessionFactory.openSession();
+//        session.beginTransaction();
+//        session.createQuery( "DELETE FROM address_in_groups" );
+//        session.getTransaction().commit();
+//        session.close();
     }
 }
