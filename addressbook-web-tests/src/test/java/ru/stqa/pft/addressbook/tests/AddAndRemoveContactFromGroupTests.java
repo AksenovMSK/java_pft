@@ -38,7 +38,7 @@ public class AddAndRemoveContactFromGroupTests extends TestBase {
         ContactData modifyContact = contacts.iterator().next();
         GroupData selectedGroup = groups.iterator().next();
         app.contact().addToGroup(modifyContact , selectedGroup);
-        app.goTo().addedGroupPage();
+        app.db().addedContactToGroup(modifyContact, selectedGroup);
     }
 
     @Test
