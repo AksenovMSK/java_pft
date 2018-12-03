@@ -1,6 +1,8 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.annotations.Test;
+import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
@@ -11,24 +13,28 @@ public class DbConnectionTest {
     @Test
     public void dbConnectionTest(){
         Connection conn = null;
+        Contacts contacts = new Contacts();
 
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost/addressbook?user=root&password=&serverTimezone=UTC");
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("select group_id, group_name, group_header, group_footer from group_list");
-            Groups groups = new Groups();
+            ResultSet rs = st.executeQuery("SELECT addressbook.id, addressbook.firstname, addressbook.lastname, addressbook.address, addressbook.mobile, addressbook.fax, addressbook.email, addressbook.homepage " +
+                    "FROM addressbook INNER JOIN address_in_groups ON addressbook.id = address_in_groups.id");
             while (rs.next()){
-                groups.add(new GroupData()
-                        .withId(rs.getInt("group_id"))
-                        .withName(rs.getString("group_name"))
-                        .withHeader(rs.getString("group_header"))
-                        .withFooter(rs.getString("group_footer")));
+                contacts.add(new ContactData()
+                        .withId(rs.getInt("addressbook.id"))
+                        .withFirstName(rs.getString("addressbook.firstname"))
+                        .withLastName(rs.getString("addressbook.lastname"))
+                        .withAddress(rs.getString("addressbook.address"))
+                        .withMobilePhone(rs.getString("addressbook.mobile"))
+                        .withFax(rs.getString("addressbook.fax"))
+                        .withEmail(rs.getString("addressbook.email"))
+                        .withHomepage(rs.getString("addressbook.homepage")));
             }
             rs.close();
             st.close();
             conn.close();
-            System.out.println(groups);
-
+            System.out.println(contacts);
         } catch (SQLException ex) {
             // handle any errors
             System.out.println("SQLException: " + ex.getMessage());

@@ -62,36 +62,37 @@ public class DbHelper {
         }
     }
 
-    public ContactData addedContactToGroup(ContactData modifyContact, GroupData selectedGroup) {
+    public Contacts addedContactToGroup(ContactData modifyContact, GroupData selectedGroup) {
 
         Connection conn = null;
-        ContactData contact = new ContactData();
+        Contacts contacts = new Contacts();
 
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost/addressbook?user=root&password=&serverTimezone=UTC");
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT addressbook.id, addressbook.firstname, addressbook.lastname, addressbook.address, addressbook.mobile, addressbook.fax, addressbook.email, addressbook.homepage " +
                     "FROM addressbook INNER JOIN address_in_groups ON addressbook.id = address_in_groups.id");
-             contact.withId(rs.getInt("addressbook.id"))
-                    .withFirstName(rs.getString("addressbook.firstname"))
-                    .withLastName(rs.getString("addressbook.lastname"))
-                    .withAddress(rs.getString("addressbook.address"))
-                    .withMobilePhone(rs.getString("addressbook.mobile"))
-                    .withFax(rs.getString("addressbook.fax"))
-                    .withEmail(rs.getString("addressbook.email"))
-                    .withHomepage(rs.getString("addressbook.homepage"));
-
+            while (rs.next()){
+                contacts.add(new ContactData()
+                        .withId(rs.getInt("addressbook.id"))
+                        .withFirstName(rs.getString("addressbook.firstname"))
+                        .withLastName(rs.getString("addressbook.lastname"))
+                        .withAddress(rs.getString("addressbook.address"))
+                        .withMobilePhone(rs.getString("addressbook.mobile"))
+                        .withFax(rs.getString("addressbook.fax"))
+                        .withEmail(rs.getString("addressbook.email"))
+                        .withHomepage(rs.getString("addressbook.homepage")));
+            }
             rs.close();
             st.close();
             conn.close();
-            System.out.println(contact);
+            System.out.println(contacts);
         } catch (SQLException ex) {
             // handle any errors
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
         }
-
-        return contact;
+        return contacts;
     }
 }
