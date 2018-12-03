@@ -8,6 +8,9 @@ import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 public class AddAndRemoveContactFromGroupTests extends TestBase {
 
     @BeforeMethod
@@ -35,10 +38,10 @@ public class AddAndRemoveContactFromGroupTests extends TestBase {
         app.db().cleanRelationsBetweenContactsAndGroups();
         Contacts contacts = app.db().contacts();
         Groups groups = app.db().groups();
-        ContactData modifyContact = contacts.iterator().next();
+        ContactData addedContact = contacts.iterator().next();
         GroupData selectedGroup = groups.iterator().next();
-        app.contact().addToGroup(modifyContact , selectedGroup);
-        app.db().addedContactToGroup(modifyContact, selectedGroup);
+        app.contact().addToGroup(addedContact , selectedGroup);
+        assertThat(addedContact, equalTo(app.db().addedContactToGroup().iterator().next()));
     }
 
     @Test

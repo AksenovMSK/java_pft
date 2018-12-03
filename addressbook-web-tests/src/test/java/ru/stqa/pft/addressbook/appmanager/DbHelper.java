@@ -62,7 +62,7 @@ public class DbHelper {
         }
     }
 
-    public Contacts addedContactToGroup(ContactData modifyContact, GroupData selectedGroup) {
+    public Contacts addedContactToGroup() {
 
         Connection conn = null;
         Contacts contacts = new Contacts();
