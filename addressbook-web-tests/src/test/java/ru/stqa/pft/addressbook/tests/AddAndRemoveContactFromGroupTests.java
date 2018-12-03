@@ -46,6 +46,13 @@ public class AddAndRemoveContactFromGroupTests extends TestBase {
 
     @Test
     public void testRemoveContactFromGroup(){
-
+        if(app.db().addedContactToGroup() == null){
+            Contacts contacts = app.db().contacts();
+            Groups groups = app.db().groups();
+            ContactData addedContact = contacts.iterator().next();
+            GroupData selectedGroup = groups.iterator().next();
+            app.contact().addToGroup(addedContact , selectedGroup);
+        }
+        ContactData addedContact = app.db().addedContactToGroup().iterator().next();
     }
 }
