@@ -127,7 +127,9 @@ public class ContactHelper extends BaseHelper {
 
     public void removeFromGroup(ContactData contact, GroupData group){
         selectContactById(contact.getId());
-        new Select(wd.findElement(By.cssSelector("option[value='" + group.getId() + "']")));
+        new Select(wd.findElement(By.name("group"))).selectByValue(String.valueOf(group.getId()));
+        // new Select(wd.findElement(By.cssSelector("select option[value='" + group.getId() + "']"))); // не работает
+        // new Select(wd.findElement(By.name("group"))).selectByVisibleText(group.getName()); // не работает
         click(By.name("remove"));
     }
 
