@@ -125,6 +125,12 @@ public class ContactHelper extends BaseHelper {
         click(By.cssSelector("input[name='add']"));
     }
 
+    public void removeFromGroup(ContactData contact, GroupData group){
+        selectContactById(contact.getId());
+        new Select(wd.findElement(By.cssSelector("option[value='" + group.getId() + "']")));
+        click(By.name("remove"));
+    }
+
     private void selectContactById(int id) {
         wd.findElement(By.cssSelector("input[id='" + id + "']")).click();
     }
