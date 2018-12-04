@@ -59,9 +59,11 @@ public class AddAndRemoveContactFromGroupTests extends TestBase {
         }
         Groups groups = app.db().groups();
         GroupData selectedGroup = groups.iterator().next();
+        Contacts before = app.db().addedContactToGroup();
         ContactData removedContact = app.db().addedContactToGroup().iterator().next();
         app.goTo().homePage();
-        app.contact().removeFromGroup(removedContact, selectedGroup); //не удаляет контакт из группы
-        assertThat(app.db().addedContactToGroup().without(removedContact) , equalTo(app.db().addedContactToGroup()));
+        app.contact().removeFromGroup(removedContact, selectedGroup);
+        Contacts after = app.db().addedContactToGroup();
+        assertThat(before.without(removedContact) , equalTo(after));
     }
 }
