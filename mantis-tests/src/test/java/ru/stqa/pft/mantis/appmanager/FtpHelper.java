@@ -1,6 +1,6 @@
 package ru.stqa.pft.mantis.appmanager;
 
-import sun.net.ftp.FtpClient;
+import org.apache.commons.net.ftp.FTPClient;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,7 +23,7 @@ public class FtpHelper {
         ftp.rename(targer, backup);
         ftp.enterLocalPassiveMode();
         ftp.storeFile(targer, new FileInputStream(file));
-        ftp.disconnect;
+        ftp.disconnect();
     }
 
     public void restore(String backup, String targer) throws IOException {
@@ -31,6 +31,6 @@ public class FtpHelper {
         ftp.login(app.getProperty("ftp.login"), app.getProperty("ftp.password"));
         ftp.deleteFile(targer);
         ftp.rename(backup, targer);
-        ftp.disconnect;
+        ftp.disconnect();
     }
 }
