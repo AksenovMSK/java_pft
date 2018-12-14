@@ -35,6 +35,7 @@ public class ChangePasswordTests extends TestBase  {
 
         app.loginUI().in("administrator", "root");
         app.goTo().users();
+        app.goTo().user(user);
 
         app.newSession().login(user, password);
     }

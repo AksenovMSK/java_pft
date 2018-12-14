@@ -11,4 +11,9 @@ public class NavigationHelper extends BaseHelper  {
     public void users(){
         click(By.linkText("Manage Users"));
     }
+
+    public void user(String user){
+        wd.findElement(By.xpath("//a[contains(text(),'" + user + "')]")).click();
+
+    }
 }
