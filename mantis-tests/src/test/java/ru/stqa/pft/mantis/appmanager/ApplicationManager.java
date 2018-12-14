@@ -18,6 +18,8 @@ public class ApplicationManager {
 
   private String browser;
   private RegistrationHelper registrationHelper;
+  private NavigationHelper navigationHelper;
+  private LoginHelper loginHelper;
   private FtpHelper ftpHelper;
   private MailHelper mailHelper;
 
@@ -51,6 +53,20 @@ public class ApplicationManager {
       registrationHelper = new RegistrationHelper(this);
     }
     return registrationHelper;
+  }
+
+  public NavigationHelper goTo() {
+    if(navigationHelper == null){
+      navigationHelper = new NavigationHelper(this);
+    }
+    return navigationHelper;
+  }
+
+  public LoginHelper loginUI() {
+    if(loginHelper == null){
+      loginHelper = new LoginHelper(this);
+    }
+    return loginHelper;
   }
 
   public FtpHelper ftp(){
