@@ -13,7 +13,7 @@ import java.util.List;
 
 import static org.testng.Assert.assertTrue;
 
-public class ChangePasswordTests extends TestBase  {
+public class ChangeUserPasswordTests extends TestBase  {
 
     @BeforeMethod
     public void startMailServer(){
@@ -22,7 +22,7 @@ public class ChangePasswordTests extends TestBase  {
 
     @Test
 
-    public void testRegistration() throws IOException, MessagingException {
+    public void testChangeUserPassword() throws IOException, MessagingException {
         long now = System.currentTimeMillis();
         String user = String.format("user%s", now);
         String password = "password";
