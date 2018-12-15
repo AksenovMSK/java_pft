@@ -22,6 +22,7 @@ public class ApplicationManager {
   private LoginHelper loginHelper;
   private FtpHelper ftpHelper;
   private MailHelper mailHelper;
+  private UserHelper userHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -60,6 +61,13 @@ public class ApplicationManager {
       navigationHelper = new NavigationHelper(this);
     }
     return navigationHelper;
+  }
+
+  public UserHelper user() {
+    if(userHelper == null){
+      userHelper = new UserHelper(this);
+    }
+    return userHelper;
   }
 
   public LoginHelper loginUI() {
