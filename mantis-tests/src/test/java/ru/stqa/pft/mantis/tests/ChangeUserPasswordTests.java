@@ -1,5 +1,6 @@
 package ru.stqa.pft.mantis.tests;
 
+import com.google.common.collect.Iterables;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -9,6 +10,7 @@ import ru.stqa.pft.mantis.model.MailMessage;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.testng.Assert.assertTrue;
@@ -22,7 +24,7 @@ public class ChangeUserPasswordTests extends TestBase  {
 
     @Test
 
-    public void testChangeUserPassword() throws IOException, MessagingException {
+    public void testChangeUserPassword() throws IOException, MessagingException, InterruptedException {
         long now = System.currentTimeMillis();
         String user = String.format("user%s", now);
         String password = "password";
@@ -35,15 +37,17 @@ public class ChangeUserPasswordTests extends TestBase  {
         app.loginUI().in("administrator", "root");
         app.goTo().users();
         app.goTo().user(user);
-        app.user().changeMail(user,email);
         app.user().resetPassword();
         app.loginUI().out();
 
-
         String newPassword = "newpassword";
         List<MailMessage> newMailMessages = app.mail().wairForMail(1, 10000);
-        String newConfirmationLink = findConfirmationLink(newMailMessages, email);
+        MailMessage lastElement = Iterables.getLast(newMailMessages);
+        List<MailMessage> listWithLastElement = new ArrayList<>();
+        listWithLastElement.add(lastElement);
+        String newConfirmationLink = findConfirmationLink(listWithLastElement, email);
         app.registration().enterNewPassword(newConfirmationLink, newPassword);
+
         app.newSession().login(user, newPassword);
     }
 

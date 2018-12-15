@@ -12,9 +12,10 @@ public class UserHelper extends BaseHelper {
         click(By.xpath("//input[@value='Reset Password']"));
     }
 
-    public void changeMail(String username, String email){
+    public void changeMail(String username, String email) throws InterruptedException {
         type(By.name("email"), "new" + email);
         click(By.xpath("//input[@value='Update User']"));
+        Thread.sleep(2000);
         click(By.linkText("Manage Users"));
         click(By.xpath("//a[contains(text(),'" + username + "')]"));
     }
