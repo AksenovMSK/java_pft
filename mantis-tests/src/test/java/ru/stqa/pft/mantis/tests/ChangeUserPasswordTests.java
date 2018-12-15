@@ -31,17 +31,17 @@ public class ChangeUserPasswordTests extends TestBase  {
         List<MailMessage> mailMessages = app.mail().wairForMail(2, 10000);
         String confirmationLink = findConfirmationLink(mailMessages, email);
         app.registration().finish(confirmationLink, password);
-        app.loginUI().out();
 
         app.loginUI().in("administrator", "root");
         app.goTo().users();
         app.goTo().user(user);
+        app.user().changeMail(user,email);
         app.user().resetPassword();
         app.loginUI().out();
-        app.loginUI().in(user, password);
+
 
         String newPassword = "newpassword";
-        List<MailMessage> newMailMessages = app.mail().wairForMail(2, 10000);
+        List<MailMessage> newMailMessages = app.mail().wairForMail(1, 10000);
         String newConfirmationLink = findConfirmationLink(newMailMessages, email);
         app.registration().enterNewPassword(newConfirmationLink, newPassword);
         app.newSession().login(user, newPassword);
