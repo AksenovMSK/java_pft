@@ -10,6 +10,7 @@ import org.apache.http.message.BasicNameValuePair;
 import ru.stqa.pft.rest.model.Issue;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 
 public class RestHelper {
@@ -38,5 +39,16 @@ public class RestHelper {
                 .returnContent().asString();
         JsonElement parsed = new JsonParser().parse(json);
         return parsed.getAsJsonObject().get("issue_id").getAsInt();
+    }
+
+    public boolean checkIssueStatus(int issueId) throws IOException {
+        String json = getExecutor().execute(Request.Get("http://bugify.stqa.ru/api/issues/" + issueId + ".json"))
+                .returnContent().asString();
+
+        JsonElement parsed = new JsonParser().parse(json);
+        JsonElement issues = parsed.getAsJsonObject().get("issues");
+        List<Issue> list = new Gson().fromJson(issues, new TypeToken<List<Issue>>(){}.getType());
+        String status = list.get(0).getStatus();
+        return status.equals("Resolved");
     }
 }

@@ -1,12 +1,5 @@
 package ru.stqa.pft.rest.tests;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
-import org.apache.http.client.fluent.Executor;
-import org.apache.http.client.fluent.Request;
-import org.apache.http.message.BasicNameValuePair;
 import org.testng.annotations.Test;
 import ru.stqa.pft.rest.model.Issue;
 
@@ -19,6 +12,8 @@ public class RestTests extends TestBase {
 
     @Test
     public void testCreatedIssue() throws IOException {
+        skipIfNotFixed(628);
+
         Set<Issue> oldIssues = app.rest().getIssues();
         Issue newIssue = new Issue().withSubject("Test issue").withDescription("Test description");
         int issueId = app.rest().createIssue(newIssue);
