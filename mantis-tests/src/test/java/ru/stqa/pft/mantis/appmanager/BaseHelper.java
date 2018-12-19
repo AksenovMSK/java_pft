@@ -15,6 +15,10 @@ public class BaseHelper {
         this.wd = app.getDriver();
     }
 
+    public BaseHelper(WebDriver wd) {
+        this.wd = wd;
+    }
+
     protected void click(By locator) {
       wd.findElement(locator).click();
     }

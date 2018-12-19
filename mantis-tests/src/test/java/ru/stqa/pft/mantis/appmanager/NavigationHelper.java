@@ -9,6 +9,7 @@ public class NavigationHelper extends BaseHelper  {
     }
 
     public void users(){
+        click(By.linkText("Manage"));
         click(By.linkText("Manage Users"));
     }
 

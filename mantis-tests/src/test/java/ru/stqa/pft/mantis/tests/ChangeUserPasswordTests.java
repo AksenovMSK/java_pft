@@ -5,8 +5,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.lanwen.verbalregex.VerbalExpression;
-import ru.stqa.pft.mantis.appmanager.HttpSession;
 import ru.stqa.pft.mantis.model.MailMessage;
+import ru.stqa.pft.mantis.model.User;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
@@ -24,19 +24,13 @@ public class ChangeUserPasswordTests extends TestBase  {
 
     @Test
 
-    public void testChangeUserPassword() throws IOException, MessagingException, InterruptedException {
-        long now = System.currentTimeMillis();
-        String user = String.format("user%s", now);
-        String password = "password";
-        String email = String.format("user%s@localhost.localdomain", now) ;
-        app.registration().start(user, email);
-        List<MailMessage> mailMessages = app.mail().wairForMail(2, 10000);
-        String confirmationLink = findConfirmationLink(mailMessages, email);
-        app.registration().finish(confirmationLink, password);
+    public void testChangeUserPassword() throws IOException, MessagingException {
+
+        User user = app.db().users().iterator().next();
 
         app.loginUI().in("administrator", "root");
         app.goTo().users();
-        app.goTo().user(user);
+        app.goTo().user(user.getUsername());
         app.user().resetPassword();
         app.loginUI().out();
 
@@ -45,10 +39,10 @@ public class ChangeUserPasswordTests extends TestBase  {
         MailMessage lastElement = Iterables.getLast(newMailMessages);
         List<MailMessage> listWithLastElement = new ArrayList<>();
         listWithLastElement.add(lastElement);
-        String newConfirmationLink = findConfirmationLink(listWithLastElement, email);
+        String newConfirmationLink = findConfirmationLink(listWithLastElement, user.getEmail());
         app.registration().enterNewPassword(newConfirmationLink, newPassword);
 
-        assertTrue(app.newSession().login(user, newPassword));
+        assertTrue(app.newSession().login(user.getUsername(), newPassword));
     }
 
     private String findConfirmationLink(List<MailMessage> mailMessages, String email) {
