@@ -35,12 +35,9 @@ public class ChangeUserPasswordTests extends TestBase  {
         app.loginUI().out();
 
         String newPassword = "newpassword";
-        List<MailMessage> newMailMessages = app.mail().wairForMail(1, 10000);
-        MailMessage lastElement = Iterables.getLast(newMailMessages);
-        List<MailMessage> listWithLastElement = new ArrayList<>();
-        listWithLastElement.add(lastElement);
-        String newConfirmationLink = findConfirmationLink(listWithLastElement, user.getEmail());
-        app.registration().enterNewPassword(newConfirmationLink, newPassword);
+        List<MailMessage> MailMessages = app.mail().wairForMail(1, 10000);
+        String ConfirmationLink = findConfirmationLink(MailMessages, user.getEmail());
+        app.registration().enterNewPassword(ConfirmationLink, newPassword);
 
         assertTrue(app.newSession().login(user.getUsername(), newPassword));
     }
